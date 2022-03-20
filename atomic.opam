@@ -5,7 +5,7 @@ synopsis:
   "Compatibility package for OCaml's Atomic module, from 4.12"
 author: "OCaml maintainers"
 maintainer: "simon.cruanes.2007@m4x.org"
-license: "LGPL2.1"
+license: "LGPL-2.1"
 build: [
   ["dune" "build" "-p" name "-j" jobs]
 ]
