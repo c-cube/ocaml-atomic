@@ -20,7 +20,7 @@
 *)
 
 (** An atomic (mutable) reference to a value of type ['a]. *)
-type !'a t
+type 'a t
 
 (** Create an atomic reference. *)
 val make : 'a -> 'a t
