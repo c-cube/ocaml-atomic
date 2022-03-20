@@ -1,0 +1,14 @@
+
+(library
+  (name atomic)
+  (synopsis "Compatibility package for the Atomic module")
+  (public_name atomic)
+  (modules atomic))
+
+(executable
+  (modules gen)
+  (name gen))
+
+(rule
+  (targets atomic.ml)
+  (action (run ./gen.exe)))
