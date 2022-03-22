@@ -10,5 +10,6 @@
   (name gen))
 
 (rule
-  (targets atomic.ml)
+  (targets atomic.ml atomic.mli)
+  (deps atomic.pre412.mli atomic.post412.mli)
   (action (run ./gen.exe)))
