@@ -5,24 +5,28 @@ let atomic_before_412 = {|
   let[@inline] make x = {x}
   let[@inline] get {x} = x
   let[@inline] set r x = r.x <- x
-  let[@inline] exchange r x =
+
+  let[@inline never] exchange r x =
+    (* critical section *)
     let y = r.x in
     r.x <- x;
+    (* end critical section *)
     y
 
-  let[@inline] compare_and_set r seen v =
+  let[@inline never] compare_and_set r seen v =
+    (* critical section *)
     if r.x == seen then (
       r.x <- v;
       true
     ) else false
 
-  let[@inline] fetch_and_add r x =
+  let[@inline never] fetch_and_add r x =
     let v = r.x in
     r.x <- x + r.x;
     v
 
-  let[@inline] incr r = r.x <- 1 + r.x
-  let[@inline] decr r = r.x <- r.x - 1
+  let[@inline never] incr r = r.x <- 1 + r.x
+  let[@inline never] decr r = r.x <- r.x - 1
   |}
 
 let atomic_after_412 = {|include Atomic|}
