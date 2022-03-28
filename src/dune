@@ -4,12 +4,3 @@
   (synopsis "Compatibility package for the Atomic module")
   (public_name atomic)
   (modules atomic))
-
-(executable
-  (modules gen)
-  (name gen))
-
-(rule
-  (targets atomic.ml atomic.mli)
-  (deps atomic.pre412.mli atomic.post412.mli)
-  (action (run ./gen.exe)))
